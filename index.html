@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            background-color: #f9f9f9;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 60px);
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .delete-btn {
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My To-Do List</h1>
+
+        <ul id="todo-list">
+            <!-- List items will go here -->
+        </ul>
+
+        <form id="todo-form">
+            <input type="text" id="task-input" placeholder="Enter a new task" required>
+            <button type="submit">Add Task</button>
+        </form>
+    </div>
+
+    <script>
+        // Getting elements
+        const form = document.getElementById('todo-form');
+        const input = document.getElementById('task-input');
+        const todoList = document.getElementById('todo-list');
+
+        // Adding an event listener to the form for submission
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Create a new list item
+            const newTask = document.createElement('li');
+            newTask.textContent = input.value;
+
+            // Create a delete button
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.classList.add('delete-btn');
+
+            // When the delete button is clicked, remove the task
+            deleteButton.addEventListener('click', function () {
+                newTask.remove();
+            });
+
+            // Append the delete button to the new list item
+            newTask.appendChild(deleteButton);
+
+            // Append the new task to the list
+            todoList.appendChild(newTask);
+
+            // Clear the input field after adding the task
+            input.value = '';
+        });
+    </script>
+</body>
+</html>
