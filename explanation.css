@@ -1,0 +1,438 @@
+body{
+    background-color: black;
+}
+h1{
+    color: azure;
+}
+
+/* this adds color to all the paragraphs */
+p{
+    color: beige;
+}
+
+/* this adds color to each paragrapgh number listed using the id */
+#p1{
+    color: beige;
+}
+#p2{
+    color: beige;
+}
+#p3{
+    color: beige;
+}
+#p3{
+    color: beige;
+}
+
+/* this adds color to each paragraph by looking at the class they fall under */
+.odd{
+    color: beige;
+}
+.even{
+    color: beige;
+}
+
+
+
+
+
+/* changing color using hsl value */
+body{
+    background-color: hsl(0, 0%, 11%);
+}
+
+/* changing color using color name */
+#p1{
+    color: tomato;
+}
+
+/* changing color using rgb value */
+#p2{
+    color: rgb(88, 47, 40);
+}
+
+/* changing color using hexadecimal value */
+#p3{
+    color: #2c577c;
+}
+
+
+
+
+/* we add more then 1 font so that if the first doesnt work we can use the next available 
+if font name contains more then 1 word we add " "
+font family refers to a set of fonts that are used to define the typography for a webpage */
+h1{
+    font-family: Verdana, arial;
+}
+
+/* font size is normally 16px. em means percentage. 1em means 100%. we can use em or px for font size 
+font weight and font style is usually normal */
+p{
+    font-family: "lucida console", "courier new";
+    font-size: 1em 
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+
+
+
+/* @font-face is a rule that allows you to define custom fonts for a webpage. It enables you to load a 
+specific font from a file rather than relying on the fonts installed on the user's system 
+src is the link to the font file we downloaded on our pc 
+font family is the name we give it which we use later */ 
+
+@font-face {
+    font-family: Roboto;
+    src: url(Roboto-VariableFont_wdth,wght);
+}
+@font-face {
+    font-family: OpenSans;
+    src: url(OpenSans-VariableFont_wdth,wght);
+}
+h1{
+    font-family: Roboto, Verdana, arial;
+}
+p{
+    font-family: "Open Sans""lucida console", "courier new";
+    font-size: 1em ;
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+
+
+
+/* solid is black line border, dasded is with dashes, dotted is with dots, double is double line, 
+inset is pushed inside, outset is pushed outside, none is to remove a border 
+border width changes the thickness and it is 1 as default 
+radius changes it to round borders, higher the number rounder the border */
+
+h1{
+    border-style: solid, dashed, dotted, double, groove, ridge, inset, outset, none;
+    border-width: 3px;
+    border-color: hsl(252, 30%, 36%);
+    border-radius: 20px;
+}
+
+/* short hand code 
+border: width style color */
+h1{
+    border: 3px solid rgb(57, 72, 124);
+    border-radius: 20px;
+}
+
+/* adds border only to the bottom, top, left or right  
+radius is applied to all of the borders */
+p{
+    border-bottom: 3px solid rgb(148, 100, 100);
+    border-top: 3px solid rgb(148, 100, 100);
+    border-left: 3px solid rgb(148, 100, 100);
+    border-right: 3px solid rgb(148, 100, 100);
+
+    border-radius: 10px;
+}
+
+
+
+
+
+/* first number: horizontal, second: vertical, third: blur  
+we can also add color 
+we can add more than 1 shadow at a time by seperating them with a comma */
+h1{
+    text-shadow: 3px 3px 5px rgb(144, 67, 67), -3px -3px -5px rgb(81, 47, 155);
+}
+
+/* box with a shadow */
+#box1{
+    width: 100;
+    height: 100;
+    background-color: rgb(179, 167, 144);
+    box-shadow: 3px 3px 5px;
+}
+
+
+
+
+/* margin in the .box class adds margin to both the boxes 
+margin bottom, left, right, top adds margin to the specif box accordingly
+margin = auto makes it appear in the center of the page automatically */ 
+body{
+    margin: 0px;
+}
+.box{
+    border: 5px solid;
+    font-size: 5em;
+    width: 250px;
+    height: 250px;
+    margin: 50px;
+}
+#box1{
+    background-color: hsl(0, 57%, 25%);
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    
+    margin-left: auto;     <!-- this adds a margin and takes up as much as space possible -->
+
+}
+#box2{
+    background-color: hsl(138, 71%, 16%);
+
+}
+
+
+/* display: flow root allows all the elements in the box to stay inside and not overflow when size of the screen is changed 
+float left allows the image to be on the left and the text on the right */
+
+body{
+    border: 3px solid;
+    display: flow-root;
+}
+#img1{
+    float: left;
+    margin-right: 10px;
+}
+
+#img2{
+    float: right;
+    margin-right: 10px;
+}
+
+
+
+/* overflow: visible lets the text overflow, hidden hides the overflowed contents however we can still interact with it,
+clip is used with overflow clip margin which when set to a specific amount only shows that much of the text and hides the rest,
+scroll adds a scroll bar both horizontal and vertical to see the entire text: if we dont have enough elements we still see the scroll
+bar but it is disabled,  auto only displays the scroll bar if it is needed. */
+div{
+    border: 2px solid;
+    height: 75px;
+    overflow: visible;
+    overflow: hidden;
+    overflow: clip;
+
+    overflow-clip-margin: 13px;
+
+    overflow: scroll;
+    overflow: auto;
+}
+
+
+
+/* when block is used we can use width and height to change the shape of the block
+but when inline is used we cannot use the width and height it only takes up space as much is needed 
+and all other elements appear in line with them
+with inline block we can use width and height but still the rest of the text appears in line with them (behaves both like inline and block)
+none deletes the element 
+visibility is similar to dispay, when used the element is hiiden but still takes up the space */
+
+div{
+    background-color: rgb(195, 116, 116);
+    width: 100px;
+    height: 100px;
+    display: block;
+    display: inline;
+    display: inline-block;
+    display: none;
+    visibility: hidden;
+}
+span{
+    background-color: rgb(139, 139, 189);
+    width: 100px;
+    height: 100px;
+    display: block;
+    display: inline;
+    display: inline-block;
+    display: none;
+    visibility: hidden;
+}
+
+
+
+
+/* * is used to define all elements 
+max width and min width is defined to tell the max and min width possible when using auto. Same for height
+100 vh means 100 percent viewport height
+if we use max height it doesnot use all the space thats just the max height available 
+whereas when we use min height it uses that much height because its the min height required to be used */
+* {
+    box-sizing: border-box;
+}
+.container{
+    background-color: hsl(0, 14%, 45%);
+    height: 100vh;
+}
+
+.box{
+    border: 2px solid;
+    padding: 25px;
+    height: auto;
+    width: 50%;
+    float: left;
+    text-align: center;
+
+    max-width: 25%;
+}
+
+
+
+
+/* when using position relative, if we use top it means it is moved 100 px down from the top from normally where it is 
+when using fixed the elemnt is fixed tot he screen and the text around it under it and moves but the box stay there */
+
+
+#box1{
+    width: 200px;
+    height: 200px;
+    background-color: rgb(16, 16, 82);
+    position: relative;
+    top: 100px;
+    left: 100px;
+
+    position: fixed;
+}
+
+/* absolute means the box2 is in box 1 and moves wherever it goes */
+#box1{
+    width: 200px;
+    height: 200px;
+    background-color: rgb(16, 16, 82);
+    position: fixed;
+    top: 100px;
+    left: 100px;
+}
+#box2{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(86, 18, 14);
+    position: absolute;
+    top: 50px;
+    left: 50px;
+}
+
+
+
+
+/* background image adds the image using the url 
+if it is smaller in pixcels it is repeated to fit in the background, we use the no repeat option to not make it repeat
+the image appers at the top, we then use the center to center it out but it centers horizontally
+we use the fixed option to fix it to the center (not the scroll option which makes the image scroll we the screen)
+then we use the cover option to make the image cover the entire screen */
+body{
+    background-image: url(images.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+
+
+
+/* decendant is the space after the container used to highlight all the lines included in it 
+child are the elements which fall directly under the main div class which in this case is 1 and 2
+general siblings are the elments that are in the body but not in the div so technically they are siblings of the div elements which in this case are 4 and 5
+adjacent sibling are the elements that are right next to the div elements but doesnot contain all the siblings */
+#container{
+    border: 2px solid;
+}
+#container p{
+    background-color: hsl(60, 49%, 45%);
+}
+#container > p{
+    background-color: hsl(60, 49%, 45%);
+}
+#container ~ p{
+    background-color: hsl(60, 49%, 45%);
+}
+#container + p{
+    background-color: hsl(60, 49%, 45%);
+}
+
+
+
+
+
+/* these are used to change the appearance of the links
+link makes changes to the link 
+hover makes changes when the corsor is kept on it 
+active makes changes when clicked for a long time 
+visited makes changes when we click the link and come back to the page */ 
+a:link{
+    color: hsl(195, 46%, 58%);
+}
+a:hover{
+    color: hsl(180, 65%, 15%);
+    font-size: 2.1em;
+}
+a:active{
+    color: hsl(240, 61%, 49%);
+    font-size: 2.1em;
+}
+a:visited{
+    color: hsl(0, 59%, 27%);
+}
+
+/* not hover makes changes to all the items except that is being hovered */
+li:hover{
+    background-color: hsl(80, 61%, 50%);
+}
+li:not(:hover){
+    background-color: hsl(251, 18%, 54%);
+}
+
+/* we can make changes by putting any value in the () after child 
+odd for odd numbers, even for even numbers 
+1,2,3,... , or 3n for every 3rd element , 3n+2 or 3n+1 can also be used */
+li:nth-child(){
+    background-color: hsl(60, 73%, 51%);
+}
+
+/* this makes the hello text disappear until we hover over the "hover here" texy */
+#greeting p{
+    background-color: rgb(118, 193, 195);
+    padding: 10px;
+    display: none;
+}
+#greeting:hover p{
+    display: block;
+}
+
+
+
+/* we can selection anything from our code and change the style or add an element using pseudo element */
+h1::first-letter{
+    font-size: 2em;
+    font-style: italic;
+}
+p::first-line{
+    background-color: hsl(60, 37%, 68%);
+}
+p::selection{
+    color: hsl(120, 22%, 51%);
+    background-color: hsl(0, 83%, 14%);
+}
+#fruit li::before{
+    content: "☑";
+}
+#apple::after{
+    content: "🍏";
+}
+#orange::after{
+    content: "🍊";
+}
+#banana::after{
+    content: "🍌";
+}
+#fruit li::marker{
+    content: "☑";
+    color: blueviolet;
+    font-size: 1.2em;
+}

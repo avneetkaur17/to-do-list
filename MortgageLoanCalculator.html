@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mortgage Loan Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .calculator {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            width: 90%;
+        }
+        .history {
+            text-align: left;
+            margin-top: 20px;
+        }
+        #historyList {
+            display: none;
+            list-style-type: none;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Mortgage Loan Calculator</h2>
+        <input type="number" id="loanAmount" placeholder="Loan Amount ($)">
+        <input type="number" id="interestRate" placeholder="Annual Interest Rate (%)">
+        <input type="number" id="loanTerm" placeholder="Loan Term (years)">
+        <input type="number" id="extraPayment" placeholder="Extra Monthly Payment ($)">
+        <button onclick="calculateMortgage()">Calculate</button>
+        <button onclick="clearHistory()">Clear History</button>
+        <button onclick="resetCalculator()">Reset</button>
+        <button onclick="toggleHistory()">Show History</button>
+        <h3 id="result"></h3>
+        <h4 id="newLoanTerm"></h4>
+        <div class="history">
+            <h4>Calculation History</h4>
+            <ul id="historyList"></ul>
+        </div>
+    </div>
+
+    <script>
+        function calculateMortgage() {
+            let loanAmount = parseFloat(document.getElementById("loanAmount").value);
+            let interestRate = parseFloat(document.getElementById("interestRate").value) / 100 / 12;
+            let loanTerm = parseFloat(document.getElementById("loanTerm").value) * 12;
+            let extraPayment = parseFloat(document.getElementById("extraPayment").value) || 0;
+
+            if (isNaN(loanAmount) || isNaN(interestRate) || isNaN(loanTerm) || loanAmount <= 0 || interestRate <= 0 || loanTerm <= 0) {
+                document.getElementById("result").innerText = "Please enter valid numbers.";
+                return;
+            }
+
+            let monthlyPayment = (loanAmount * interestRate) / (1 - Math.pow(1 + interestRate, -loanTerm));
+            let newMonthlyPayment = monthlyPayment + extraPayment;
+            
+            let remainingBalance = loanAmount;
+            let months = 0;
+            
+            while (remainingBalance > 0) {
+                let interestPayment = remainingBalance * interestRate;
+                let principalPayment = newMonthlyPayment - interestPayment;
+                if (principalPayment <= 0) break;
+                remainingBalance -= principalPayment;
+                months++;
+            }
+            
+            let newLoanTermYears = Math.floor(months / 12);
+            let newLoanTermMonths = months % 12;
+
+            let resultText = `Loan: $${loanAmount}, Interest: ${document.getElementById("interestRate").value}%, Term: ${document.getElementById("loanTerm").value} years, Extra Payment: $${extraPayment} -> Monthly Payment: $${newMonthlyPayment.toFixed(2)}, New Loan Term: ${newLoanTermYears} years ${newLoanTermMonths} months`;
+            
+            document.getElementById("result").innerText = `Monthly Payment: $${newMonthlyPayment.toFixed(2)}`;
+            document.getElementById("newLoanTerm").innerText = `New Loan Term: ${newLoanTermYears} years ${newLoanTermMonths} months`;
+            saveToHistory(resultText);
+        }
+
+        function saveToHistory(entry) {
+            let history = JSON.parse(localStorage.getItem("mortgageHistory")) || [];
+            history.push(entry);
+            localStorage.setItem("mortgageHistory", JSON.stringify(history));
+            displayHistory();
+        }
+
+        function displayHistory() {
+            let history = JSON.parse(localStorage.getItem("mortgageHistory")) || [];
+            let historyList = document.getElementById("historyList");
+            historyList.innerHTML = "";
+            history.forEach(entry => {
+                let li = document.createElement("li");
+                li.textContent = entry;
+                historyList.appendChild(li);
+            });
+        }
+
+        function clearHistory() {
+            localStorage.removeItem("mortgageHistory");
+            displayHistory();
+        }
+
+        function resetCalculator() {
+            document.getElementById("loanAmount").value = "";
+            document.getElementById("interestRate").value = "";
+            document.getElementById("loanTerm").value = "";
+            document.getElementById("extraPayment").value = "";
+            document.getElementById("result").innerText = "";
+            document.getElementById("newLoanTerm").innerText = "";
+        }
+
+        function toggleHistory() {
+            let historyList = document.getElementById("historyList");
+            if (historyList.style.display === "none" || historyList.style.display === "") {
+                historyList.style.display = "block";
+            } else {
+                historyList.style.display = "none";
+            }
+        }
+
+        window.onload = displayHistory;
+    </script>
+</body>
+</html>

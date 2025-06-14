@@ -1,0 +1,50 @@
+body{
+    background-image: url(Field.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+h1{
+    text-shadow: 6px 3px 5px hsl(30, 27%, 50%), -3px -3px -5px hsl(259, 28%, 51%);
+    text-align: center;
+}
+h2{
+    text-shadow: 6px 3px 5px hsl(30, 27%, 50%), -3px -3px -5px hsl(259, 28%, 51%);
+    text-align: center;
+}
+#outer-box{
+    width: 500px;
+    height: 500px;
+    margin: auto;
+    background-color: rgb(65, 36, 4);
+    box-shadow: 3px 3px 5px;
+    padding: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    border: 2px solid black;
+}
+#inner-box{
+    width: 5px;
+    height: 5px;
+    margin: auto;
+    background-color: rgb(4, 65, 20);
+    box-shadow: 3px 3px 5px;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#line1{
+        width: 100px;
+        height: 100px;
+        position: relative;
+        animation-duration: 30s;
+        animation-iteration-count: 2s;
+        animation-direction: alternate;
+}
+#inner-image{
+    float: none;
+    margin-right: 10px;
+}

@@ -1,0 +1,28 @@
+#greeting p{
+    background-color: rgb(118, 193, 195);
+    padding: 10px;
+    display: none;
+}
+#greeting:hover p{
+    display: block;
+}
+a:link{
+    color: hsl(195, 46%, 58%);
+}
+a:hover{
+    color: hsl(180, 65%, 15%);
+    font-size: 2.1em;
+}
+a:active{
+    color: hsl(240, 61%, 49%);
+    font-size: 2.1em;
+}
+a:visited{
+    color: hsl(0, 59%, 27%);
+}
+p:hover{
+    background-color: hsl(80, 61%, 50%);
+}
+p:not(:hover){
+    background-color: hsl(251, 18%, 54%);
+}

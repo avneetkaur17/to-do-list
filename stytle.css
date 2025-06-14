@@ -1,0 +1,12 @@
+h1{
+    border: 3px solid rgb(57, 72, 124);
+    border-radius: 20px;
+}
+pre{
+    border-bottom: 3px solid rgb(148, 100, 100);
+    border-top: 3px solid rgb(61, 155, 53);
+    border-left: 3px solid rgb(61, 137, 123);
+    border-right: 3px solid rgb(60, 19, 50);
+
+    border-radius: 10px;
+}

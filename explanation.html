@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>      <!-- main area where we write program -->
+    <head>      <!-- contains title, character set, and links to css file -->
+
+    <!-- Specifies that the character encoding for the document is UTF-8, which is a standard character encoding for web pages -->
+    <meta charset="UTF-8">
+
+    <!--Ensures the page is responsive and scales properly on different screen sizes, especially for mobile devices.-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title> My First Website </title>       <!-- used to write the title-->
+    </head>
+    <body>      <!-- used to write the body --> 
+        <h1>This is an h1 heading</h1>      <!-- these are different font sizes -->
+        <h2>This is an h2 heading</h2>      <!-- h1 is the largest and h6 is the smallest -->
+        <h3>This is an h3 heading</h3>
+        <h4>This is an h4 heading</h4>
+        <h5>This is an h5 heading</h5>
+        <h6>This is an h5 heading</h6>
+
+        <!-- adds a horizontal line across the page -->
+        <hr>
+
+        <!-- used to add a brake(add a new empty line) -->
+        <br>        
+
+        <!-- used to add paragraphs. doesn't care about any formating made -->
+        <p> this is paragraph </p>     
+
+        <!-- cares about all the brakes and spaces -->
+        <pre> this is a pre formatted paragraph </pre>  
+        
+        <!-- used to add hyperlinks. -->
+        <!-- href is used to specify the link's destination -->
+        <!-- target opens the link in a new tab or sometimes in the new window --> 
+        <a href="http://www.example.com"
+        target="_blank"    
+        title="Goes to google">
+        click me
+        </a> 
+
+        <!-- used to add images -->
+        <!-- alt is used when we add the wrong type and it doesnt appear on the screen 
+             so it shows the text instead -->
+        <img src="dog.png"
+        alt="This is a picture of a dog"
+        height="200" width="200">
+
+        <!-- if we add all the images in a folder then we use the following code to find it-->
+        <img src="images/dog.png">
+
+        <!--used to add audio to the website
+        adding controls makes it appear on the website and then we can play it
+        adding autoplay plays it automatically when we click the link
+        muted helps it mute when it autoplays
+        loop helps it play again when finished 
+        wav is an alternative option just in case the browser doesn't support mp3 -->
+        <audio controls autoplay muted loop>
+            <source src="abcd.mp3" type="audio/mpeg">
+            <source src="abcd.wav" type="audio/wav">
+        </audio>
+
+        <!-- used to add a video 
+         width and height changes the size
+         type tells the format of the file 
+         add a link on the video -->
+         <a href="http://websiteHere.com"> 
+         <video width="500px" controls autoplay muted loop>
+            <source src="video.mp4" type="video/mp4">
+            <source src="video.webm" type="video/webm">
+            </video>
+         </a>
+        
+         <!-- used to chnage the font of the text -->
+         <p> This is normal text </p>
+         <p> This is <b>bold</b> text </p>
+         <p> This is <i>italic</i>text </p>
+         <p> This is <u>underlined</u> text </p>
+         <p> This is <del>deleted</del> text </p>
+         <p> This is <big>big</big> text </p>
+         <p> This is <small>small</small> text </p>
+         <p> This is <sub>subscript</sub> text </p>
+         <p> This is <sup>superscript</sup> text </p>
+         <p> This is <tt>monospaced</tt> text </p>
+         <p> This is <mark>normal</mark> text </p>
+         <p> This is <mark style="background-color: lightgreen;">normal</mark> text </p>
+
+         <!-- This creates a button with the text "click me" 
+          oneclick: This attribute attaches an event handler. When the button is clicked, the JavaScript function doSomething() is executed -->
+         <button onclick="doSomething()" style="font-size: 25px; background-color: grey; color: blue; border-radius: 25px;"> click me </button>
+
+        <p id="greeting"> Hello </p>
+
+        <!-- This section contains JavaScript code that runs in the browser
+        Inside the function, this line of code finds the paragraph with the id="greeting" and changes its inner content to "Goodbye" -->
+        <script>        
+            function doSomething(){
+                document.getElementById("greeting").innerHTML = "Goodbye";
+            }
+        </script>
+
+        <!-- table creates a table
+         tr is the table row
+         th is the table header
+         td is the table data -->
+
+        <table border="1" style="background-color: black;">
+            <tr align="center" style="background-color: lightblue;">
+                <th width="100">Sunday</th>
+                <th width="100">Monday</th>
+                <th width="100">Tuesady</th>
+                <th width="100">Wednesday</th>
+                <th width="100">Thursday</th>
+                <th width="100">Friday</th>
+                <th width="100">Saturday</th>
+            </tr>
+
+            <tr align="center" style="background-color: aliceblue;">
+                <td>Closed</td>
+                <td>9-5</td>
+                <td>9-5</td>
+                <td>9-5</td>
+                <td>9-5</td>
+                <td>9-5</td>
+                <td>10-2</td>
+             </tr>
+        </table>
+
+        <!-- action="index.php": Specifies where to send the form data when submitted (in this case, to the "index.php" file) 
+         method="POST": Specifies the HTTP method for sending form data, which in this case is POST
+         enctype="multipart/form-data": Necessary for uploading files as part of the form submission -->
+        <form action="index.php" method="POST" enctype="multipart/form-data">
+
+            <!-- Label for the username input
+            A text input for the username. It requires at least 6 characters and a maximum of 15 characters
+            The required attribute makes it mandatory to fill out -->
+            <label for="username">username:</label>
+            <input type="text" id="username" placeholder="Spongbob" minlength="6" maxlength="15" required><br>
+
+            <!-- Label for the password input
+            It creates a password input field where the text is obscured -->
+            <label for="password">password:</label>
+            <input type="password" id="password"><br>
+
+            <!--  Label for the email input
+            This creates an email input field with validation for email format -->
+            <label for="email">email:</label>
+            <input type="email" id="email" placeholder="Spongbob@gmail.com"> <br>
+
+            <!-- Label for the phone number input
+            A phone number input with a pattern that validates the format -->
+            <label for="phone">phone:</label>
+            <input type="tel" id="phone" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"><br>
+
+            <!-- Label for the birthdate input
+            A date input for the user's birthdate.-->
+            <label for="bday">birthdate:</label>
+            <input type="date" id="bday"><br>
+
+            <!-- Label for the quantity input
+            A number input that allows a value between 0 and 99, with a default value of 1 -->
+            <label for="quantity">quantity:</label>
+            <input type="number" id="quantity" minlength="0" maxlength="99" value="1"><br>
+
+            <!-- Creates a radio button for the title "Mr."
+            Creates a radio button for the title "Ms."
+            Creates a radio button for the title "PhD."-->
+            <label for="Mr.">Mr.:</label>
+            <input type="radio" id="Mr." value="Mr." name="title">
+            <label for="Ms.">Ms.:</label>
+            <input type="radio" id="Ms." value="Ms." name="title">
+            <label for="PhD">PhD:</label>
+            <input type="radio" id="PhD." value="PhD." name="title"><br>
+
+            <!-- Label for the payment method dropdown
+            <select>: A dropdown for selecting a payment method
+            Option for Visa
+            Option for MasterCard
+            Option for a gift card -->
+            <label for="payment">payment:</label>
+            <select>
+                <option value="visa"> visa </option>
+                <option value="mastercard"> mastercard </option>
+                <option value="giiftcard"> giftcard </option>
+            </select><br>
+
+            <!-- Label for the subscription checkbox
+            A checkbox to subscribe -->
+            <label for="subscibe"> subscribe:</label>
+            <input type="checkbox" id="subscibe"><br>
+
+            <!-- Label for the comment area
+            A textarea field where users can type comments. It has 3 rows and 25 columns.-->
+            <lable for="comment"> comment:</lable>
+            <textarea type="comment" rows="3" cols="25"></textarea>
+
+            <!-- Label for the file input
+            This allows users to upload files, specifically images in PNG or JPEG format -->
+            <lable for="file"> file:</lable>
+            <input type="file" id="file" accept="image/png, image/jpeg"><br>
+
+            <!-- reset: A button that resets the form fields back to their default values
+            submit: A submit button that sends the form data to the server when clicked -->
+            <input type="reset"><br>
+            <input type="submit">
+        </form>
+
+
+        <!-- Unordered List -->
+        <!-- <ul>: This defines the unordered list (bullet points)
+        <li>: List item 
+        under the coffee supplies list there is a nested list-->
+
+        <h4> Groceries </h4>
+        <ul>
+            <li> milk </li>
+            <li> bread </li>
+            <li> eggs </li>
+            <li> coffee supplies </li>
+            <ul>
+                <li> coffee beans </li>
+                <li> creamer </li>
+                <li> sugar </li>
+            </ul>
+        </ul>
+
+        <!-- Ordered List -->
+        <!-- <ol>: This defines the ordered list (numbered items)-->
+
+        <h4>To do list</h4>
+        <ol>
+            <li> eat breakfast </li>
+            <li> go to class </li>
+            <li> walk dog </li>
+            <li> work </li>
+        </ol>
+
+        <!-- Description List -->
+        <!-- <dl>: This defines the description list
+        <dt>: description term
+        <dd>: adds the description-->
+
+        <h4> Mythical creatures</h4>
+        <dl style="background-color: rgba(173, 216, 230, 0.429); border: 2px;">
+            <dt> dragon </dt>
+            <dd> add a description </dd>
+            <dt> phoenix </dt>
+            <dd> add a description </dd>
+            <dt> vampire </dt>
+            <dd> add a description </dd>
+            <dt> werewolf </dt>
+            <dd> add a description </dd>
+        </dl>
+
+        <!-- header is used to hold introductory title -->
+        <header style="background-color: mediumpurple;">
+            <h1> Welcome to my page </h1>
+            <a href=""> Home </a>
+            <a href=""> About Us </a>
+            <a href=""> Products </a>
+            <a href=""> Contact Us </a>
+            <hr>
+        </header>
+
+        <!-- <main>: to add text between the header and footer -->
+        <main>
+            <h4> Check out these cool moves: </h4>
+            <image src="images.jpeg" alt="Cute Dog Pic">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis molestiae natus doloremque? 
+            Eum exercitationem assumenda cupiditate, non quam temporibus laboriosam nesciunt dignissimos 
+            vitae dolore fugiat? Praesentium veniam dolorum expedita adipisci.</p>
+            </image>
+        </main>
+
+        <!-- used to add concluding content at the end of the page 
+         (&copy:) is used to add a copyright symbol 
+         small is used to make the text appear a little small -->
+        <footer style="background-color: mediumpurple;">
+            <hr>
+            Author: Avneet Kaur <br>
+            &copy; 2025 copyright reserved <br>
+            <small> <a href="mailto:avneetkaur@fake.com">Avneetkaur@fake.com</a> </small>
+        </footer>
+
+    </body>
+</html>
+
